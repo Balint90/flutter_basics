@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
 }
 
 class BottomTabs extends StatefulWidget {
-  const BottomTabs({super.key});
+  const BottomTabs({Key? key}) : super(key: key);
 
   @override
   State<BottomTabs> createState() => _BottomTabsState();
@@ -26,11 +26,21 @@ class _BottomTabsState extends State<BottomTabs> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    Container(color: Colors.red),
-    Container(color: Colors.blue),
-    Container(color: Colors.green),
-    Container(color: Colors.purple),
-    Container(color: Colors.yellow),
+    Container(
+      color: Colors.red,
+    ),
+    Container(
+      color: Colors.blue,
+    ),
+    Container(
+      color: Colors.green,
+    ),
+    Container(
+      color: Colors.purple,
+    ),
+    Container(
+      color: Colors.yellow,
+    ),
   ];
 
   @override
@@ -39,9 +49,9 @@ class _BottomTabsState extends State<BottomTabs> {
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
+        currentIndex: _selectedIndex,
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        currentIndex: _selectedIndex,
         onTap: (index) {
           setState(() {
             _selectedIndex = index;
@@ -49,42 +59,35 @@ class _BottomTabsState extends State<BottomTabs> {
         },
         items: [
           BottomNavigationBarItem(
-            icon: SvgPicture.asset(_selectedIndex == 0
-                ? 'assets/vectors/home-bold.svg'
-                : 'assets/vectors/home-outline.svg'),
-            label: '',
-          ),
+              icon: SvgPicture.asset(_selectedIndex == 0
+                  ? 'assets/vectors/home-bold.svg'
+                  : 'assets/vectors/home-outline.svg'),
+              label: ''),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset(_selectedIndex == 0
-                ? 'assets/vectors/search-bold.svg'
-                : 'assets/vectors/search-outline.svg'),
-            label: '',
-          ),
+              icon: SvgPicture.asset(_selectedIndex == 1
+                  ? 'assets/vectors/search-bold.svg'
+                  : 'assets/vectors/search-outline.svg'),
+              label: ''),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset(_selectedIndex == 0
-                ? 'assets/vectors/add-square-bold.svg'
-                : 'assets/vectors/add-square.svg'),
-            label: '',
-          ),
+              icon: SvgPicture.asset(_selectedIndex == 2
+                  ? 'assets/vectors/add-square-bold.svg'
+                  : 'assets/vectors/add-square-outline.svg'),
+              label: ''),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset(_selectedIndex == 0
-                ? 'assets/vectors/video-play-bold.svg'
-                : 'assets/vectors/video-play-outline.svg'),
-            label: '',
-          ),
+              icon: SvgPicture.asset(_selectedIndex == 3
+                  ? 'assets/vectors/video-play-bold.svg'
+                  : 'assets/vectors/video-play-outline.svg'),
+              label: ''),
           BottomNavigationBarItem(
-            icon: Container(
-              width: 30,
-              height: 30,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/profile.svg'),
-                ),
-                shape: BoxShape.circle,
+              icon: Container(
+                width: 30,
+                height: 30,
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('assets/images/profile.png')),
+                    shape: BoxShape.circle),
               ),
-            ),
-            label: '',
-          ),
+              label: ''),
         ],
       ),
     );
