@@ -35,7 +35,7 @@ class _HomeState extends State<Home> {
           padding: EdgeInsets.all(30),
           child: TextField(
             controller: _dateController,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               labelText: 'DATE',
               filled: true,
               prefixIcon: Icon(Icons.calendar_today),
