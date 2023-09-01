@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,19 +25,41 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
-      child: MaterialButton(
-        height: 50,
-        minWidth: 200,
-        color: const Color(0xff1D1E22),
-        child: const Text(
-          'Open',
-          style: TextStyle(
-            color: Colors.white,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          MaterialButton(
+            height: 50,
+            minWidth: 200,
+            color: const Color(0xff1D1E22),
+            child: const Text(
+              'Open Animated Dialog',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            onPressed: () {
+              _openAnimatedDialog(context);
+            },
           ),
-        ),
-        onPressed: () {
-          _displayBottomSheet(context);
-        },
+          const SizedBox(
+            height: 20,
+          ),
+          MaterialButton(
+            height: 50,
+            minWidth: 200,
+            color: const Color(0xff1D1E22),
+            child: const Text(
+              'Open Bottom Sheet',
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+            onPressed: () {
+              _displayBottomSheet(context);
+            },
+          ),
+        ],
       ),
     ));
   }
@@ -63,5 +86,29 @@ class Home extends StatelessWidget {
             ),
           )),
     );
+  }
+
+  void _openAnimatedDialog(BuildContext context) {
+    showGeneralDialog(
+        context: context,
+        barrierDismissible: true,
+        barrierLabel: '',
+        transitionDuration: const Duration(milliseconds: 400),
+        pageBuilder: (context, animation, secondaryAnimation) {
+          return Container();
+        },
+        transitionBuilder: (context, animation, secondaryAnimation, child) {
+          return ScaleTransition(
+            scale: Tween<double>(begin: 0.5, end: 1.0).animate(animation),
+            child: AlertDialog(
+              title: const Text('Hello'),
+              content: const Text('I am a Dialog'),
+              shape: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16.0),
+                borderSide: BorderSide.none,
+              ),
+            ),
+          );
+        });
   }
 }
