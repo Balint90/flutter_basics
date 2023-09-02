@@ -23,16 +23,56 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 6,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: const Color(0xff1D1E22),
           title: const Text('Tab bar example'),
           bottom: const TabBar(
+            isScrollable: true,
             tabs: [
-              Tab(icon: Icon(Icons.directions_car)),
-              Tab(icon: Icon(Icons.directions_transit)),
-              Tab(icon: Icon(Icons.directions_bike)),
+              Row(
+                children: [
+                  Tab(icon: Icon(Icons.directions_car)),
+                  SizedBox(width: 5),
+                  Text('Car'),
+                ],
+              ),
+              Row(
+                children: [
+                  Tab(icon: Icon(Icons.directions_transit)),
+                  SizedBox(width: 5),
+                  Text('Transit'),
+                ],
+              ),
+              Row(
+                children: [
+                  Tab(icon: Icon(Icons.directions_bike)),
+                  SizedBox(width: 5),
+                  Text('Bike'),
+                ],
+              ),
+              Row(
+                children: [
+                  Tab(icon: Icon(Icons.directions_boat)),
+                  SizedBox(width: 5),
+                  Text('Boat'),
+                ],
+              ),
+              Row(
+                children: [
+                  Tab(icon: Icon(Icons.directions_railway)),
+                  SizedBox(width: 5),
+                  Text('Railway'),
+                ],
+              ),
+              Row(
+                children: [
+                  Tab(icon: Icon(Icons.directions_bus)),
+                  SizedBox(width: 5),
+                  Text('Bus'),
+                ],
+              ),
             ],
           ),
         ),
@@ -59,6 +99,30 @@ class Home extends StatelessWidget {
               Icon(Icons.directions_bike),
               SizedBox(height: 10),
               Text('Bike'),
+            ],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.directions_boat),
+              SizedBox(height: 10),
+              Text('Boat'),
+            ],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.directions_railway),
+              SizedBox(height: 10),
+              Text('Railway'),
+            ],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.directions_bus),
+              SizedBox(height: 10),
+              Text('Bus'),
             ],
           ),
         ]),
